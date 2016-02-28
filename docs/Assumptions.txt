@@ -1,0 +1,23 @@
+﻿I'm going to try to put all the assumptions I'm making into this file for an easy resource to point to for explanation of decisions. If I make an assumption without thinking about it; it'll 
+probably not get put into this file.
+
+Storing Load Values
+    Only an accurate average of the provided values needs to be stored; not all of the values provided. This is a memory optimization; and a "don't do silly things" decision.
+
+Server Name Assumptions
+    The value provided is unique to a server; the same name means it's the same server as the rest.
+
+CPU Load Assumptions
+    The value provided is some calculation over all the CPU's and cores to provide a single representation. 
+        I feel this is a valid assumption, not just for this project, but for an actual implementation of this as only the host-server will know the exact configuration and be able to 
+        make intelligent choices. Any aggregation done to resolve it to a single number on the tracking server will require assumptions that may not be true, causing incorrect weighting
+        of the information being provided.
+    The value is the calculated single value for CPU utilization for the reporting period.
+    The value is a percentage. 
+        Non-percentages wouldn't be particularly informative across non-identical systems.
+
+RAM Load Assumptions
+    The value provided represents the amount of RAM currently used; or RAM_TOTAL - RAM_FREE.
+        Because RAM used specifies the load.
+    The value is a percentage.
+        Non-percentages wouldn't be particularly informative across non-identical systems.

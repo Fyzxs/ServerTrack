@@ -1,0 +1,36 @@
+This file is a consolidated place to put decisions I've made during implementation.
+
+Routing
+    The path base I've decided to use is "api/v1/record/" for the tracking end point and "api/v1/display". I'm using "v1" to represent the 'version' of the API
+    as I've had far too many 'quick and simple' API's that won't need to change, change. This creates a bit of a headache moving forward. I'm a big fan of assuming everything is
+    going to change beyond what I can imagine; so I'll try to best prep the code to be extensible. For APIs; this is some form of versioning.
+
+Record
+    As the TrackerController will show, I've decided upon using GET to track the information. I would prefer to use POST as this follows the standard of HTTP request types for 'posting' information to a server.
+    For reference; PUT is intended for putting a resource at some URI; while POST is for sending data to the server. The tracking is sending data to the server, so it's appropriate to
+    use POST over any other HTTP method. In this case; for testing and being able to easily use the example code - GET.
+    
+    I decided to use the path for the server data because... easier. Both for processing and calling. JSON will require some form of serialization on the calling side and deserialization on the
+    tracker side. Removing that simplifies the initial implementation.
+    Key value pairs in the POSt body were decided against, again for ease of implementation. This time solely for the client. It's easier to build a single URL than put in the KVP's.
+
+    I would add a DELETE method to be able to clear out a server from the collection. Heavy usage is going to start taking up memory; there's no reason to store 24hrs of data for a server that's 
+    no longer used. It adds the ability for an environment that needs it to better utilize memory on the tracking system.
+    The DELETE request will return the same data as a display request.
+    This wasn't added because it's simple example code. I did code it up; but not enough substantial testing for me to consider it production level; and is actually outside the scope.
+
+Display
+    Using GET for the obvious of GETing data.
+
+Guard Clauses
+    There's a large quantity and libraries for how to SUPER BEST do guard clauses; I'm going with `if`s and exceptions. This is a style preference; which I'm not beholden to beyond "it requires no outside libraries".
+
+Queueing Incoming Data
+    To minimize the waiting and thread consumption on incoming data; the inputs are tossed into a queue to be processed. Then a single background thread will be configured to process the data. This ensures thread
+        safety for the data. Additionally, and also of significance, the queueing of data will allow the connection to be closed as quick as possible; freeing that thread up for another incoming request.
+        Thread management is an important aspect to prevent hanging or long delays which may cause issues on the data producers.
+    Async/Await wasn't used to prevent thread overusage as that doesn't prevent the delay in the caller getting a response from the server.
+
+Returned Data
+    The returned data doesn't have the time included. The time frames are specified; and the data will be returned in decending order (newest first).
+    The latest hour will return data that is the average of all minutes in the hours so far.

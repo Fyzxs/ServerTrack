@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerTrack", "ServerTrack\ServerTrack.csproj", "{4039B1D3-C541-4C88-9612-0CA57E8A1352}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{10FA6D2A-4124-40BE-BD2A-D6ABF0CB74A8}"
+	ProjectSection(SolutionItems) = preProject
+		docs\Assumptions.txt = docs\Assumptions.txt
+		docs\Decisions.txt = docs\Decisions.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerTrackNUnitTests", "ServerTrackNUnitTests\ServerTrackNUnitTests.csproj", "{8EDF4429-251A-416D-BB68-93F227191BCF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4039B1D3-C541-4C88-9612-0CA57E8A1352}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4039B1D3-C541-4C88-9612-0CA57E8A1352}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4039B1D3-C541-4C88-9612-0CA57E8A1352}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4039B1D3-C541-4C88-9612-0CA57E8A1352}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EDF4429-251A-416D-BB68-93F227191BCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EDF4429-251A-416D-BB68-93F227191BCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EDF4429-251A-416D-BB68-93F227191BCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EDF4429-251A-416D-BB68-93F227191BCF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
