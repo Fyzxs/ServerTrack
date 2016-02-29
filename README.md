@@ -9,9 +9,7 @@ Preparation to Run:
 
 Running:
     Open the ServerTrack.sln in Visual Studio. There will be 2 projects; Primary and Unit Tests.
-
     The primary project is "ServerTrack". This contains the end points for recording a server load and for displaying the average information for a server.
-
     From what ever your prefered "Start" method is out of visual studio; start the project. It is set as the StartUp project.
 
 Started:
@@ -21,11 +19,8 @@ ServerLoads:
     To provide a serverload; the URL must have the following path
         api/v1/record/{serverName}/cpu/{cpuLoad}/ram/{ramLoad}/
     where {serverName} is a string and {cpuLoad} and {ramLoad} are doubles
-
     Make GET requests to the url and the data will be stored and averaged for the server specified
-
     All entries with the same servername will be computed together.
-
     It is very important that the record load url end in a slash. Any doubles that have a decimal point will not work. This wasn't detected until late in the flow; and not enough time to correct it.
     Lame, I know - but a weekend project isn't going to hit all the edge cases perfectly.
 
